@@ -1,0 +1,11 @@
+# Local config (contains workspace-specific section definitions)
+ablation_config.yaml
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Results (large, machine-generated)
+results/
+*.jsonl
