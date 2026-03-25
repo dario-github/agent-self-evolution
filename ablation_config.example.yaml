@@ -1,0 +1,93 @@
+# ablation_config.example.yaml
+# ─────────────────────────────────
+# Ablation group definitions for agent workspace experiments.
+# Copy this to ablation_config.yaml and customize for your agent.
+#
+# Each group defines sections to remove from workspace files.
+# Sections are identified by regex patterns matching heading lines.
+#
+# Format:
+#   group_id:
+#     name: "Human-readable group name"
+#     sections:
+#       section_id:
+#         file: "FILENAME.md"
+#         start: "regex matching section start (inclusive)"
+#         end: "regex matching next section start (exclusive), or null for EOF"
+#
+# Special case: start=null, end=null → remove entire file content.
+# Pipe-separated alternatives in end pattern: "^## Foo|^## Bar"
+
+workspace_files:
+  - AGENTS.md
+  - SOUL.md
+  - TOOLS.md
+  - USER.md
+  - IDENTITY.md
+  - MEMORY.md
+  - HEARTBEAT.md
+
+groups:
+  AG1:
+    name: "Safety rules (core)"
+    sections:
+      safety.rule_1:
+        file: AGENTS.md
+        start: "^\\*\\*Rule 1"
+        end: "^\\*\\*Rule 2"
+      safety.rule_2:
+        file: AGENTS.md
+        start: "^\\*\\*Rule 2"
+        end: "^## Next Section"
+
+  AG2:
+    name: "Safety rules (auxiliary)"
+    sections:
+      safety.aux_1:
+        file: AGENTS.md
+        start: "^\\*\\*Aux Rule 1"
+        end: "^\\*\\*Aux Rule 2"
+
+  AG3:
+    name: "Personality and behavior"
+    sections:
+      soul.core:
+        file: SOUL.md
+        start: "^## Core"
+        end: "^## Output"
+      soul.output:
+        file: SOUL.md
+        start: "^## Output"
+        end: "^## Modes"
+
+  AG4:
+    name: "Tool configuration"
+    sections:
+      tools.routing:
+        file: TOOLS.md
+        start: "^## Model"
+        end: "^## Skills"
+
+  AG5:
+    name: "Memory and user context"
+    sections:
+      memory.active:
+        file: MEMORY.md
+        start: "^## Active Context"
+        end: "^## Historical"
+      user.profile:
+        file: USER.md
+        start: null
+        end: null
+      identity.self:
+        file: IDENTITY.md
+        start: null
+        end: null
+
+  AG6:
+    name: "Process protocols"
+    sections:
+      agents.bootstrap:
+        file: AGENTS.md
+        start: "^## Session Bootstrap"
+        end: "^## Rules"
