@@ -113,3 +113,15 @@ From ablation experiments on a production agent system:
 ## License
 
 Apache License 2.0 — See [LICENSE](LICENSE).
+
+## Companion Projects
+
+- [**Nous Safety**](https://github.com/dario-github/nous) — Ontology-driven runtime safety engine with Datalog reasoning
+- [**Biomorphic Memory**](https://github.com/dario-github/biomorphic-memory) — Brain-inspired agent memory with spreading activation (LongMemEval SOTA 89.8%)
+
+## Install via ClawdHub
+
+```bash
+openclaw skills install agent-self-evolution
+```
+
